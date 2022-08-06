@@ -16,9 +16,6 @@ const Filter = require("bad-words");
 
 const app = express();
 
-//const { Server } = require("socket.io");
-//const io = new Server(httpServer);
-
 const httpServer = createServer(app);
 
 //Handeling CORS for socket.io
@@ -53,10 +50,6 @@ io.on("connection", (socket) => {
     "Time: " + socket.handshake.time,
     "Hello from socket"
   );
-
-  //io.in("21").emit();
-
-  //callback() is the function passed to client side of input emit function
 
   socket.on("join", ({ username, userRoom }, callback) => {
     const { error, user } = addUser({
@@ -140,6 +133,6 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(port, () => {
+httpServer.listen(process.env.PORT || port, () => {
   console.log("Server listening on port " + port);
 });
