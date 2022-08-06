@@ -42,7 +42,6 @@ const {
 } = require("./src/utils/messages");
 
 io.on("connection", (socket) => {
-  console.log("A user connected");
   socket.join("21");
   socket.emit(
     "message",
@@ -96,8 +95,6 @@ io.on("connection", (socket) => {
     );
 
     callback(undefined, "Message received");
-
-    console.log("Message received");
   });
 
   socket.on("sendLocation", (coords, callback) => {
@@ -114,12 +111,6 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
     if (user) {
-      console.log("user disconnected");
-      // socket.broadcast.emit(
-      //   "userconnection",
-      //   generateMessage(user.username + " has leaved")
-      // );
-
       socket.broadcast
         .to(user.room)
         .emit("userconnection", generateMessage(`${user.username} leaved`));
@@ -133,6 +124,4 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(process.env.PORT || port, () => {
-  console.log("Server listening on port " + port);
-});
+httpServer.listen(process.env.PORT || port);

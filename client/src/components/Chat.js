@@ -46,12 +46,6 @@ const Chat = () => {
       { sender: username, meSSage: inputData, room: userRoom },
       (err, acknowledgement) => {
         if (!err) {
-          //This function is executed when the message is delivered
-          console.log("Message delivered");
-          //acknowledgement is received from the server
-          console.log(acknowledgement);
-        } else {
-          console.log(err);
         }
       }
     );
@@ -110,7 +104,7 @@ const Chat = () => {
         scrollToBottom();
       },
       () => {
-        console.log("Message sent");
+        //console.log("Message sent");
       }
     );
   }, [username, userRoom]);
