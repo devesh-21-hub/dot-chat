@@ -38,7 +38,7 @@ const Login = () => {
   // }, [username, userRoom]);
   return (
     <div className={classes.main}>
-      <h1 className={classes.head}>Chat App</h1>
+      <h1 className={classes.head}>DotChat</h1>
       <p className={classes.description}>
         {loginError
           ? "Try another username"
