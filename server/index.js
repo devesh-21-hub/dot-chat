@@ -16,6 +16,7 @@ const Filter = require("bad-words");
 
 const app = express();
 
+app.use(cors());
 const httpServer = createServer(app);
 
 //Handeling CORS for socket.io
